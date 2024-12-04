@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
 import { CartItemsContext } from "../hooks/contextCart";
 import ElementModal from "../components/modal";
-
+import "./index.css";
 function ProductOverview() {
   const [data, setData] = useState(null); // Dados do produto
   const [modalIsOpen, setModalIsOpen] = useState(false); // controle de abertura e fechamento do modal
   const [cart, setCart] = useContext(CartItemsContext); // pegando o cart do contexto principal
-  
+
   // salvar o estado do botão
   const getCartVisible = () => {
     const savedCartItem = localStorage.getItem("visibleCart");
@@ -22,9 +22,9 @@ function ProductOverview() {
   // modifica o estado do modal
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => {
-    setModalIsOpen(false)
-    localStorage.removeItem('visibleCart');
-    localStorage.removeItem('cartItem');
+    setModalIsOpen(false);
+    localStorage.removeItem("visibleCart");
+    localStorage.removeItem("cartItem");
     setCart([]);
     setVisibility({});
   };
@@ -82,7 +82,9 @@ function ProductOverview() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://raw.githubusercontent.com/Edilson591/front_End_Mentor_Solutions/main/product-list-with-cart-main/data.json");
+        const response = await fetch(
+          "https://raw.githubusercontent.com/Edilson591/front_End_Mentor_Solutions/main/product-list-with-cart-main/data.json"
+        );
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -180,7 +182,9 @@ function ProductOverview() {
                   </div>
                 </div>
                 <div className="product-info">
-                  <p className="product-category" role="heading" aria-level="3">{product.category}</p>
+                  <p className="product-category" role="heading" aria-level="3">
+                    {product.category}
+                  </p>
                   <h2 className="product-name">{product.name}</h2>
                   <p className="product-price">${product.price.toFixed(2)}</p>
                 </div>
@@ -239,7 +243,11 @@ function ProductOverview() {
                     This is a <b>carbon-neutral</b> delivery
                   </p>
                 </div>
-                <button className="confirm-button" onClick={openModal} aria-label="Confirm Order">
+                <button
+                  className="confirm-button"
+                  onClick={openModal}
+                  aria-label="Confirm Order"
+                >
                   Confirm Order
                 </button>
               </>
@@ -257,11 +265,17 @@ function ProductOverview() {
           </aside>
         </S.AsideContainer>
         <ElementModal isOpen={modalIsOpen} onRequestClose={closeModal} />
-        
       </div>
-      <div classname="t-center">
-        made with love by abdelrahman
-      </div>
+      <footer className="footer">
+        Card with Cart made with 🩷 by
+        <a
+          href="https://abdelrahmanhassanalii.github.io/card/"
+          className="porto"
+          target="_blank"
+        >
+          Abdelrahman
+        </a>
+      </footer>
     </>
   );
 }
