@@ -53,4 +53,4 @@ This project was an excellent opportunity to practice concepts of state manageme
 
 ## Project Deployment
 
-The project is available for viewing through GitHub Pages. Check out the final result [here](https://product-list-with-cart-main1.vercel.app/).
+The project is available for viewing through GitHub Pages. Check out the final result [here](https://product-list-with-cart-pied-six.vercel.app/).
